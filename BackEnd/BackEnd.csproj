@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\IServices\" />
-    <Folder Include="Domain\IRepositories\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
 
 
