@@ -22,9 +22,19 @@ namespace BackEnd.Services
             await _usuarioRepository.SaveUser(usuario);
         }
 
-        public Task<bool> ValidateExistence(Usuario usuario)
+        public async Task<bool> ValidateExistence(Usuario usuario)
         {
-            return _usuarioRepository.ValidateExistence(usuario);
+            return await _usuarioRepository.ValidateExistence(usuario);
+        }
+
+        public async Task<Usuario> ValidatePassword(int id, string passwordAnterior)
+        {
+            return await _usuarioRepository.ValidatePassword(id, passwordAnterior);
+        }
+
+        public async Task UpdatePassword(Usuario usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }
