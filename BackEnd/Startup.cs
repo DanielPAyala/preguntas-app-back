@@ -40,6 +40,13 @@ namespace BackEnd
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
 
+            // CORS
+            services.AddCors(options => 
+                             options.AddPolicy("AllowWebapp", builder => 
+                                                              builder.AllowAnyOrigin()
+                                                                     .AllowAnyHeader()
+                                                                     .AllowAnyMethod()));
+
             services.AddControllers();
         }
 
@@ -50,6 +57,9 @@ namespace BackEnd
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // CORS
+            app.UseCors("AllowWebapp");
 
             app.UseRouting();
 

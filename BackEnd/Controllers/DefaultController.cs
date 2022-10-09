@@ -11,5 +11,9 @@ namespace BackEnd.Controllers
     [ApiController]
     public class DefaultController : ControllerBase
     {
+        public IActionResult Get()
+        {
+            return Ok("Servidor en servicio...");
+        }
     }
 }
