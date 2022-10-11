@@ -29,15 +29,14 @@ namespace BackEnd.Controllers
                 var user = await _loginService.ValidateUser(usuario);
                 if (user == null)
                 {
-                    return BadRequest(new { message = "Usuario y/o password inválidos" });
+                    return BadRequest(new { message = "Usuario y/o contraseña inválidos" });
                 }
 
                 return Ok(new { usuario = user.NombreUsuario });
             }
             catch (Exception ex)
             {
-                BadRequest(ex.Message);
-                throw;
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -54,15 +54,14 @@ namespace BackEnd.Controllers
                 var usuario = await _usuarioService.ValidatePassword(id, passwordEncriptado);
                 if (usuario == null)
                 {
-                    return BadRequest(new { message = "Password incorrecta"});
+                    return BadRequest(new { message = "Contraseña incorrecta"});
                 }
                 else
                 {
                     usuario.Password = Encriptar.EncriptarPassword(passwordEncriptado);
                     await _usuarioService.UpdatePassword(usuario);
-                    return Ok(new { message = "Password actualizada con éxito" });
+                    return Ok(new { message = "Contraseña actualizada con éxito" });
                 }
-                return Ok(new { message = "Password actualizada con éxito"});
             }
             catch (Exception ex)
             {
