@@ -34,7 +34,7 @@ namespace BackEnd.Services
 
         public async Task UpdatePassword(Usuario usuario)
         {
-            throw new NotImplementedException();
+            await _usuarioRepository.UpdatePassword(usuario);
         }
     }
 }
