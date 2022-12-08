@@ -38,10 +38,12 @@ namespace BackEnd
             // Services
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ICuestionarioService, CuestionarioService>();
 
             // Repositories
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ICuestionarioRepository, CuestionarioRepository>();
 
             // CORS
             services.AddCors(options => 
@@ -64,7 +66,8 @@ namespace BackEnd
                     ClockSkew = TimeSpan.Zero
                 });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
